@@ -1,5 +1,47 @@
 <h1>words category</h1>
 
+displayedColums: string[]=['name', 'type', 'index'];
+dataSource = [new words("frutes",1,Language.English,Language.Hebrew)];
+
+
+<div>
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> CategoryName </th>
+    <td mat-cell *matCellDef="let element"> {{element.CategoryName}} </td>
+</ng-container>
+<ng-container matColumnDef="WordsNumber">
+<th mat-header-cell *matHeaderCellDef> Type </th>
+<td mat-cell *matCellDef="let element"> {{element.wordsList.lenght}}
+</td>
+</ng-container>
+<ng-container matColumnDef="date">
+<th mat-header-cell *matHeaderCellDef> LastUpdate </th>
+<td mat-cell *matCellDef="let element">{{element.date}} <!-- חסר לחשב תאריך שינויcurrentDate   -->
+</td>
+<!--
+<td>
+<ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Actions </th>
+    <td mat-cell *matCellDef="let word;let i=index">
+        <button mat-icon-button [routerLink]="['/words,i']">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteWord(word.id)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </td>
+</ng-container>
+-->
+
+</ng-container>
+<tr mat-header-row *matHeaderRowDef="displayedColumns">
+</tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns">
+</tr>
+</table>
+</div>
+
 <!--
     צריך את הקופוננטה של bindig לפני בניית ויבוא של הטבלה
     
@@ -32,3 +74,6 @@
     Add
 </button>
  -->
+
+ 
+

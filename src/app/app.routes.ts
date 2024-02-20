@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { words } from './shered/model/words';
+import { CategoryComponent } from './category/category.component';
 
 export const routes: Routes = [
-   // {path: '', component:wordsListComponent}
+   {path: '', component:CategoryComponent}
 ];
