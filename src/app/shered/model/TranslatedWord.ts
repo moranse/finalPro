@@ -1,7 +1,5 @@
 
-export class TranslatedWord {
-    wordsInCategory:TranslatedWord[]= [];
-    
+export class TranslatedWord {   
     constructor( public sourceWord:string, public targetWord:string) {
     }
 

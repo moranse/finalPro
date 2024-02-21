@@ -4,8 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
-import { Category } from '../shered/model/words';
-//import { Words } from '../../shered/model/words';
+import { Language } from '../shered/model/language';
+import { words } from '../shered/model/words';
 
  
 @Component({
@@ -16,11 +16,6 @@ import { Category } from '../shered/model/words';
   styleUrl: './category.component.css'
 })
 export class CategoryComponent {
-dataSource: Category[]=[];
-displayedColumns: any;
-
+dataSource = [new words("frutes",1,Language.English,Language.Hebrew,[])];
+displayedColumns: string[]=['name', 'WordsNumber', 'date'];
 }
-
-//displayedColums: string[]=['name', 'type', 'index'];
-//dataSource = [new words("frutes",1,Language.English,Language.Hebrew)];
-//<!--categy1= new words("frutes",1,Language.English,Language.Hebrew,[]); -->
