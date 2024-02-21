@@ -1,5 +1,8 @@
 
-export interface TranslatedWord {
-    sourceWord?: string;
-    targetWord?: string;
- }
+export class TranslatedWord {
+    wordsInCategory:TranslatedWord[]= [];
+    
+    constructor( public sourceWord:string, public targetWord:string) {
+    }
+
+}
