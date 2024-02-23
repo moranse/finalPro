@@ -1,19 +1,17 @@
 <h1>words category</h1>
-
-
 <div>
 <table mat-table [dataSource]="categorys">
     <ng-container matColumnDef="CategoryName">
         <th mat-header-cell *matHeaderCellDef> Category Name </th>
-        <td mat-cell *matCellDef="let x"> {{x.CategoryName}} </td>
+        <td mat-cell *matCellDef="let x"> {{x.categoryName}} </td>
     </ng-container>
     <ng-container matColumnDef="WordsNumber">
         <th mat-header-cell *matHeaderCellDef> Number of words </th>
-        <td mat-cell *matCellDef="let x"> {{x.wordsList.lenght}}</td>
+        <td mat-cell *matCellDef="let x"> {{x.wordsList.length}}</td>
     </ng-container>
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef> Last Update </th>
-        <td mat-cell *matCellDef="let x">{{x.date}} <!-- חסר לחשב תאריך שינויcurrentDate   --></td>
+        <td mat-cell *matCellDef="let x">{{x.lastUpDate.getDate()+'/'+x.lastUpDate.getMonth()+'/'+x.lastUpDate.getYear()}}</td>
     </ng-container> 
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Actions </th>
@@ -29,4 +27,13 @@
 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+</div>
+<div>
+   
+        <section>
+              <button mat-button color="primary" class="label">Primary</button>
+        </section>
+   
+
+
 </div>

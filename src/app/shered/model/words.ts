@@ -4,7 +4,7 @@ import { TranslatedWord } from "./TranslatedWord";
 export class words {
     wordsInCategory:TranslatedWord[]= [];
     
-    constructor( public categoryName:string, public ID:number,public sourceWord: Language,public targetWord: Language, public wordsList:TranslatedWord[],public lastUpDate?:Date) {
+    constructor( public categoryName:string, public ID:number,public sourceWord: Language,public targetWord: Language, public wordsList:TranslatedWord[],public lastUpDate:Date) {
     if(wordsList) {
         this.wordsList= wordsList;
     }
