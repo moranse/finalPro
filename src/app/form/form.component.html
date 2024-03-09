@@ -30,10 +30,10 @@
             </button>
         </div>
         <div ngModelGroup="wordsList" #wordsGroup="ngModelGroup">
-          <!--  <mat-error *ngIf="wordsGroup.invalid">
+           <mat-error *ngIf="currentCategory.wordsList.length<1">
                 no words add
             </mat-error>
-        -->
+        
    <div *ngFor="let newWord of currentCategory.wordsList; index as i" class="wordsForm">
         <mat-form-field>
             <mat-label>word in english:</mat-label>
