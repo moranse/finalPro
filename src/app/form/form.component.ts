@@ -75,18 +75,16 @@ newWord:TranslatedWord=new TranslatedWord("","");
   }
 
   onSubmitRegistration() {
-    console.log("Form submitted!!!");
+    console.log("Form submitted!");
     if (this.ID){//האם נמצאת בטופס לצורך עריכה
       this.categoryService.update(this.currentCategory)
       console.log(this.currentCategory.categoryName+" update sucsesfully");
     }else{
       this.categoryService.add(this.currentCategory)
+      console.log(this.currentCategory.categoryName+" added sucsesfully");
     }
    this.router.navigate(['/']);//חזרה לעמוד הבית
    console.log(this.currentCategory);
    }
   
-   isEmpty(){
-    return true;
-   }
 }

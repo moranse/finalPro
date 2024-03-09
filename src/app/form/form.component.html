@@ -1,6 +1,6 @@
 <!-- <div>category:{{currentCategory.categoryName}}</div> -->
 
-<form #NewCategoryForm = "ngForm" (ngSubmit)="registration()">
+<form #NewCategoryForm = "ngForm" (ngSubmit)="onSubmitRegistration()">
     <div>
         <mat-form-field>
             <mat-label>Category Name:</mat-label>
@@ -55,7 +55,7 @@
    </div>
     </div>
     <div>
-        <button type="submit" mat-raised-button color="primary" [disabled]="NewCategoryForm.invalid" (click)="onSubmitRegistration()">
+        <button type="submit" mat-raised-button color="primary" [disabled]="NewCategoryForm.invalid || NewCategoryForm.pristine">
             Save
         </button>
     </div>
