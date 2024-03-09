@@ -1,0 +1,62 @@
+<!-- <div>category:{{currentCategory.categoryName}}</div> -->
+
+<form #NewCategoryForm = "ngForm" (ngSubmit)="registration()">
+    <div>
+        <mat-form-field>
+            <mat-label>Category Name:</mat-label>
+            <input matInput [(ngModel)]="currentCategory.categoryName" name="categoryName" required #Name="ngModel">
+            <mat-error *ngIf="Name.invalid"><!--הצגת שגיאה לאחר בדיקת ולידציה-->
+                Please enter category name
+            </mat-error>
+        </mat-form-field>    
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Source Language:</mat-label>
+            <input matInput [(ngModel)]="currentCategory.sourceWord" name="sourceLanguage" disabled>
+        </mat-form-field>    
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Target Language:</mat-label>
+            <input matInput [(ngModel)]="currentCategory.targetWord" name="targetLanguage" disabled>
+        </mat-form-field>    
+    </div>
+   
+        <div class="wordsList-title">
+            <h3>words list</h3><!--להוסיף שגיאות-->
+            <button mat-fab type="button" (click)="addWord(newWord)">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div ngModelGroup="wordsList" #wordsGroup="ngModelGroup">
+          <!--  <mat-error *ngIf="wordsGroup.invalid">
+                no words add
+            </mat-error>
+        -->
+   <div *ngFor="let newWord of currentCategory.wordsList; index as i" class="wordsForm">
+        <mat-form-field>
+            <mat-label>word in english:</mat-label>
+            <input matInput [(ngModel)]="currentCategory.wordsList[i].sourceWord" name="wordE-{{i}}" pattern='^[A-Z]+$' #englishWord="ngModel" required>
+            <mat-error *ngIf="englishWord.invalid"><!--הצגת שגיאה לאחר בדיקת ולידציה-->
+                only capitel henglish letters
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>word in hebrew:</mat-label>
+            <input matInput [(ngModel)]="currentCategory.wordsList[i].targetWord" name="wordH-{{i}}" pattern='^[א-ת]+$' #hebrewWord="ngModel" required>
+            <mat-error *ngIf="hebrewWord.invalid"><!--הצגת שגיאה לאחר בדיקת ולידציה-->
+                only hebrew letters
+            </mat-error>
+        </mat-form-field>
+        <button type="button" mat-icon-button (click)="removeWord(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+   </div>
+    </div>
+    <div>
+        <button type="submit" mat-raised-button color="primary" [disabled]="NewCategoryForm.invalid" (click)="onSubmitRegistration()">
+            Save
+        </button>
+    </div>
+</form>

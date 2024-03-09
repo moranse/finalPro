@@ -9,11 +9,15 @@ export class words {
         this.wordsList= wordsList;
     }
 }
-addWord(word: TranslatedWord): void {
-    this.wordsInCategory.push(word);
-  }
-  //deletWord(word: TranslatedWord): void {
-  //  this.wordsInCategory.splice(1,1); //לסדר את המטודה למחיקה
-  //}
+currentCategory!:words;
+addWord(newWord:TranslatedWord): void {
+  this.currentCategory.wordsList.push(newWord);
+  console.log(this.currentCategory.wordsList);
+  console.log(this.currentCategory);
+}
+removeWord(i:number): void {
+  this.currentCategory.wordsList.splice(i,1);
+  console.log(this.currentCategory.wordsList)
+}
     
 }
