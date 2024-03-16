@@ -36,14 +36,14 @@
         
    <div *ngFor="let newWord of currentCategory.wordsList; index as i" class="wordsForm">
         <mat-form-field>
-            <mat-label>word in english:</mat-label>
+            <mat-label>English word:</mat-label>
             <input matInput [(ngModel)]="currentCategory.wordsList[i].sourceWord" name="wordE-{{i}}" pattern='^[A-Z]+$' #englishWord="ngModel" required>
             <mat-error *ngIf="englishWord.invalid"><!--הצגת שגיאה לאחר בדיקת ולידציה-->
                 only capitel henglish letters
             </mat-error>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>word in hebrew:</mat-label>
+            <mat-label>Hebrew word:</mat-label>
             <input matInput [(ngModel)]="currentCategory.wordsList[i].targetWord" name="wordH-{{i}}" pattern='^[א-ת]+$' #hebrewWord="ngModel" required>
             <mat-error *ngIf="hebrewWord.invalid"><!--הצגת שגיאה לאחר בדיקת ולידציה-->
                 only hebrew letters

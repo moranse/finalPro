@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,21 +12,25 @@ import { LoggingService } from '../services/logging.service';
 import { CategoryService } from '../services/category.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteCategoryDialogComponent } from '../delete-category-dialog/delete-category-dialog.component';
- 
+import { MatSortModule, MatSort } from '@angular/material/sort';
+
+
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [MatToolbarModule,MatIconModule,MatButtonModule,MatMenuModule,MatTableModule,RouterLink],
+  imports: [MatToolbarModule,MatIconModule,MatButtonModule,MatMenuModule,MatTableModule,RouterLink,MatSortModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
 
 export class CategoryComponent implements OnInit {
- categorys:words[]=[]
- constructor(private categoryService:CategoryService, private dialog:MatDialog,private loggingService:LoggingService){  
+ categorys:words[]=[];
+ //dataSource = new MatTableDataSource(this.categorys);
 
-  }
-  
+ 
+
+ constructor(private categoryService:CategoryService, private dialog:MatDialog,private loggingService:LoggingService){}
+
   displayedColumns: string[]=['CategoryName', 'WordsNumber', 'date','actions'];
   
   ngOnInit(){ //on component loading
@@ -43,5 +47,24 @@ export class CategoryComponent implements OnInit {
       }
     });
   }
+
+  sortCulomn():words[]{
+    console.log(this.categorys);
+    let sortedCategories = this.categorys.sort((category1, category2) => {
+    //  for(let category of this.categorys){
+     // console.log(category.categoryName)
+      //  this.categorys.sort((category1, category2) => {
+        const name1 = category1.categoryName.toLowerCase(); // Ensure case-insensitive sorting
+        const name2 = category2.categoryName.toLowerCase();
+        return name1.localeCompare(name2); // Use localeCompare for proper sorting
+     // });
+   // }
+  })
+  console.log(sortedCategories)
+  this.categorys=sortedCategories
+  console.log(this.categorys)
+  return this.categorys
+  }
+
 }
 
